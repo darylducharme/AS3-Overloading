@@ -6,6 +6,7 @@ package {
 	public class OverloadHandler {
 		private var _method:Function;
 		private var _types:Vector.<Class>;
+		private var _isStrict:Boolean = true;
 
 		public function OverloadHandler(types:Vector.<Class>, method:Function) {
 			_types = types.concat();
@@ -16,6 +17,8 @@ package {
 			if (args.length == _types.length) {
 				for (var index:uint = 0; index < args.length; index++) {
 					if (!(args[index] is _types[index])) {
+						return false;
+					} else if (_isStrict && args[index] !== _types[index](args[index])) {
 						return false;
 					}
 				}
@@ -30,8 +33,11 @@ package {
 
 		public function isMoreExplicit(handler:OverloadHandler):Boolean {
 			var localType:Class, compareType:Class;
-			if (handler != null && compareTypes.length == _types.length) {
+			if (handler != null) {
 				var compareTypes:Vector.<Class> = handler.argumentTypes;
+				if (compareTypes.length != _types.length) {
+					return true;
+				}
 				var points:int = 0;
 				for (var index:uint = 0; index < _types.length; index++) {
 					localType = _types[index];
