@@ -7,3 +7,5 @@ Tired of reading blogs where people complain about what AS3 is lacking and being
 * Test Booleans
 * Can we test against different Number types(i.e. uint, int, Number)
 ** What problems does that bring up
+
+[as2lib]:http://as2lib.svn.sourceforge.net/viewvc/as2lib/trunk/main/src/org/as2lib/
