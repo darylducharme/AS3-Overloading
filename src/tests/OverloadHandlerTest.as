@@ -1,4 +1,3 @@
-/*  Copyright 2012 Amazon.com, Inc. or its affiliates. All Rights Reserved. */
 package tests {
 	import org.flexunit.asserts.assertEquals;
 	import org.flexunit.asserts.assertFalse;
