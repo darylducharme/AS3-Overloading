@@ -14,7 +14,7 @@ package tests {
 		}
 
 		private function addOne(value:int):int {
-			return value + one;
+			return value + this.one;
 		}
 
 		[Test]
@@ -71,6 +71,6 @@ class AltObject {
 	public var one:String = " one";
 
 	public function addOne(value:int):String {
-		return value.toString() + one;
+		return value.toString() + this.one;
 	}
 }
