@@ -43,6 +43,7 @@ package tests {
 			assertEquals("5 one", handler.execute(alt, [5]));
 		}
 
+		[Test]
 		public function testNumericIsMoreExplicit():void {
 			const intHandler:OverloadHandler = new OverloadHandler([int], addOne);
 			const uintHandler:OverloadHandler = new OverloadHandler([uint], addOne);
