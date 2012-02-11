@@ -1,4 +1,5 @@
 package {
+	import flash.utils.describeType;
 
 	public class Overloader {
 
@@ -10,7 +11,7 @@ package {
 			_handlers = new Vector.<OverloadHandler>();
 		}
 
-		public function addHandler(types:Vector.<Class>, method:Function):void {
+		public function addHandler(types:Array, method:Function):void {
 			_handlers.push(new OverloadHandler(types, method));
 		}
 
@@ -21,7 +22,7 @@ package {
 				// have a default that can be called
 				throw new Error("No overload match for this function!");
 			}
-			best.method.apply(_scope, args);
+			return best.method.apply(_scope, args);
 		}
 
 		private function findBestHandler(matching:Vector.<OverloadHandler>):OverloadHandler {

@@ -4,12 +4,14 @@ package {
 	import flash.utils.describeType;
 
 	public class OverloadHandler {
+		private static const ORDERED_NUMBER_CLASSES:Vector.<Class> = new <Class>[Number, int, uint];
+
 		private var _method:Function;
 		private var _types:Vector.<Class>;
 		private var _isStrict:Boolean = true;
 
-		public function OverloadHandler(types:Vector.<Class>, method:Function) {
-			_types = types.concat();
+		public function OverloadHandler(types:Array, method:Function) {
+			_types = Vector.<Class>(types);
 			_method = method;
 		}
 
@@ -46,6 +48,8 @@ package {
 						points--;
 					} else if (compareType == null) {
 						points++;
+					} else if (isMoreExplicitNumberClass(localType, compareType)) {
+						points++;
 					} else if (classExtendsClass(localType, compareType)) {
 						points++;
 					} else {
@@ -55,8 +59,18 @@ package {
 				if (points == 0) {
 					throw Error("2 handlers with the same explicitness");
 				}
+				return 0 < points;
 			}
 			return true;
+		}
+
+		private function isMoreExplicitNumberClass(localType:Class, compareType:Class):Boolean {
+			const localTypePosition:int = ORDERED_NUMBER_CLASSES.indexOf(localType);
+			const compareTypePosition:int = ORDERED_NUMBER_CLASSES.indexOf(compareType);
+			if (!(localTypePosition == -1 || compareTypePosition == -1)) {
+				return compareTypePosition < localTypePosition;
+			}
+			return false;
 		}
 
 		private function classExtendsClass(localType:Class, compareType:Class):Boolean {
@@ -68,7 +82,7 @@ package {
 			return typeXML.factory.extendsClass.(@type==compareName).length() > 0;
 		}
 
-		public function get argumentTypes():Vector.<Class> {
+		protected function get argumentTypes():Vector.<Class> {
 			return _types.concat();
 		}
 

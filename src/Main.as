@@ -15,15 +15,15 @@ package {
 		}
 
 		// run a test with differing namespaces?
-		private function aFunction(... args):void {
+		private function aFunction(... args):* {
 			const overloader:Overloader = new Overloader();
-			overloader.addHandler(new <Class>[String, Number], onStringNumber);
-			overloader.addHandler(new <Class>[String], onString);
-			overloader.addHandler(new <Class>[Number], onNumber);
-			overloader.addHandler(new <Class>[int], onInt);
-			overloader.addHandler(new <Class>[uint], onUint);
-			overloader.addHandler(new <Class>[Boolean], onBoolean);
-			overloader.process(args);
+			overloader.addHandler([String, Number], onStringNumber);
+			overloader.addHandler([String], onString);
+			overloader.addHandler([Number], onNumber);
+			overloader.addHandler([int], onInt);
+			overloader.addHandler([uint], onUint);
+			overloader.addHandler([Boolean], onBoolean);
+			return overloader.process(args);
 		}
 
 		private function onInt(value:int):void {
