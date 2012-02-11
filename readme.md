@@ -9,6 +9,8 @@ I tried to allow adding of handlers with reflection/introspection pulling the me
 ## TODOs and To Address ##
 * My be good to be able to turn off numerical explicitness on a per handler basis.
 	* Need to write a test that will break the current system to see if it is necessary.
+* Is there a fun way to use namespaces in the example
+* May want some custom Error types for unit testing
 
 [tamarin]:http://hg.mozilla.org/tamarin-central/file/fbecf6c8a86f
 [as2lib]:http://as2lib.svn.sourceforge.net/viewvc/as2lib/trunk/main/src/org/as2lib/
