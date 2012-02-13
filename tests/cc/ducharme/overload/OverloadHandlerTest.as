@@ -1,4 +1,4 @@
-package tests {
+package cc.ducharme.overload {
 	import org.flexunit.asserts.assertEquals;
 	import org.flexunit.asserts.assertFalse;
 	import org.flexunit.asserts.assertTrue;

@@ -1,4 +1,4 @@
-package {
+package cc.ducharme.overload {
 	import avmplus.getQualifiedClassName;
 
 	import flash.utils.describeType;

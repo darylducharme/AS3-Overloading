@@ -1,4 +1,4 @@
-package {
+package cc.ducharme.overload {
 	import flash.utils.describeType;
 
 	public class Overloader {

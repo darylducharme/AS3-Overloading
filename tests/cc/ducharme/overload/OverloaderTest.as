@@ -1,4 +1,4 @@
-package tests {
+package cc.ducharme.overload {
 	import org.flexunit.asserts.assertEquals;
 
 	public class OverloaderTest {
